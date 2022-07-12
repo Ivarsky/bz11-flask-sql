@@ -1,4 +1,3 @@
-from crypt import methods
 from . import app
 
 
@@ -12,11 +11,11 @@ def nuevo():
     return "Crear movimiento"
 
 
-@app.route("/modificar", methods=["GET", "POST"])
-def actualizar():
-    return "Actualizar movimiento"
+@app.route("/modificar/<int:id>", methods=["GET", "POST"])
+def actualizar(id):
+    return f"Actualizar el movimiento con ID={id}"
 
 
-@app.route("/borrar", methods=["GET", "POST"])
-def eliminar():
-    return "Eliminar movimiento"
+@app.route("/borrar/<int:id>", methods=["GET", "POST"])
+def eliminar(id):
+    return f"Eliminar el movimiento {id}"
