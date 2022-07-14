@@ -36,8 +36,8 @@ Listado de movimientos
             Gasto
             {% endif %}
         </td>
-        <td class="numero">{{mov.cantidad}}</td>
-        <td class="titulo-tabla acciones">Acciones</td>"
+        <td class="numero">{{ mov.cantidad }}</td>
+        <td class="acciones"><a class="mini-boton" href="/borrar/{{ mov.id }}">&times;</a></td>
     </tr>
     {% if mov.errores %}
     <tr>
