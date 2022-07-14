@@ -64,3 +64,7 @@ class DBManager:
             conexion.rollback()
         conexion.close()
         return resultado
+        
+    def obtenerMovimientoPorId(self, id):
+        # TODO: Crear este método y devolver el movimiento cuyo ID sea id
+        pass
