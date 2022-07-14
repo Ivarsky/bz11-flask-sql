@@ -19,7 +19,7 @@ def inicio():
 
 @app.route("/nuevo", methods=["GET", "POST"])
 def nuevo():
-    return "Crear movimiento"
+    return render_template("nuevo.html")
 
 
 @app.route("/modificar/<int:id>", methods=["GET", "POST"])
@@ -29,4 +29,4 @@ def actualizar(id):
 
 @app.route("/borrar/<int:id>", methods=["GET", "POST"])
 def eliminar(id):
-    return f"Eliminar el movimiento {id}"
+    return render_template("borrar.html", resultado=True)
