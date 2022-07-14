@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block head_title %}
@@ -15,6 +16,7 @@ Listado de movimientos
         <th class="titulo-tabla">Concepto</th>
         <th class="titulo-tabla">Tipo</th>
         <th class="titulo-tabla numero">Cantidad</th>
+        <th class="titulo-tabla acciones">Acciones</th>
     </tr>
     {% if movs %}
     {% for mov in movs %}
@@ -35,6 +37,7 @@ Listado de movimientos
             {% endif %}
         </td>
         <td class="numero">{{mov.cantidad}}</td>
+        <td class="titulo-tabla acciones">Acciones</td>"
     </tr>
     {% if mov.errores %}
     <tr>

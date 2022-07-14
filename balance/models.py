@@ -17,6 +17,7 @@ class DBManager:
 
         # 3. ejecutar consulta SQL
         cursor.execute(consulta)
+
         # 4. tratar los datos
         #   4.1. obtengo los nombres de columna
         #       (   (nom_col, ...), (), ()...)
@@ -47,3 +48,19 @@ class DBManager:
         conexion.close()
 
         return self.movimientos
+
+    # db.borrar("3, DELETEFROM movimientos")
+    def borrar(self, id):
+        consulta = "DELETE FROM movimientos WHERE id=?"
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        resultado = False
+        try:
+            # DELETE FROM movimientos WHERE id = 3
+            cursor.execute(consulta, (id,)) 
+            conexion.commit()
+            resultado = True
+        except:
+            conexion.rollback()
+        conexion.close()
+        return resultado
