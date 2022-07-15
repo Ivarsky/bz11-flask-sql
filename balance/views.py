@@ -1,3 +1,6 @@
+from datetime import date
+from datetime import date
+
 from flask import render_template, request
 
 from . import app
@@ -28,6 +31,9 @@ def actualizar(id):
     if request.method == "GET":
         db = DBManager(RUTA)
         movimiento = db.obtenerMovimientoPorId(id)
+
+        movimiento["fecha"] = date.fromisoformat(movimiento["fecha"])
+
         formulario = MovimientosForm(data=movimiento)
         return render_template("form_movimiento.html", form=formulario)
 
