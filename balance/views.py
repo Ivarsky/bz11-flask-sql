@@ -1,7 +1,7 @@
 from datetime import date
 from datetime import date
 
-from flask import render_template, redirect, request, url_for
+from flask import flash, render_template, redirect, request, url_for
 
 from . import app
 from .forms import MovimientosForm
@@ -51,7 +51,9 @@ def actualizar(id):
             )
             resultado = db.consultaConParametros(consulta, params)
             if resultado:
+                flash("Movimiento actualizado correctamente ;)", category="exito")
                 return redirect(url_for("inicio"))
+            flash("Ha fallado la operación de guardar en la base de datos", category="error")
             return render_template("form_movimiento.html", form=form, id=id, errores=["Ha fallado la operación de guardar en la base de datos"])
         else:
             return render_template("form_movimiento.html", form=form, id=id, errores=["Ha fallado la validación de los datos"])
