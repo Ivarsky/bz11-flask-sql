@@ -20,6 +20,8 @@ Modificar movimiento
             {% for error in errores %}
                 <p>{{ error }}</p>
             {% endfor %}
+
+            {{ form.errors }}
         </div>
     </div>
 {% endif %}
