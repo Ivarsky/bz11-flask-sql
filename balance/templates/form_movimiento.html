@@ -11,7 +11,7 @@ Modificar movimiento
 {% block contenido %}
 {{ super() }}
 
-<form action="/modificar">
+<form action="/modificar/{{ id }}" method="POST">
     {{ form.csrf_token }}
     {{ form.id }}
     <div class="campo-formulario">

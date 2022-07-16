@@ -35,13 +35,20 @@ def actualizar(id):
         movimiento["fecha"] = date.fromisoformat(movimiento["fecha"])
 
         formulario = MovimientosForm(data=movimiento)
-        return render_template("form_movimiento.html", form=formulario)
+        return render_template("form_movimiento.html", form=formulario, id=id)
 
-    return f"Actualizar el movimiento con ID={id}"
+    elif request.method == "POST":
+        form = MovimientosForm(data=request.form)
+        if form.validate():
+            return "Guardo los datos"
+        return f"El formulario tiene errores"
 
 
 @app.route("/borrar/<int:id>", methods=["GET", "POST"])
 def eliminar(id):
     db = DBManager(RUTA)
-    esta_borrado = db.borrar(id)
+    # esta_borrado = db.borrar(id)
+    consulta = "DELETE FROM movimientos WHERE id=?"
+    params = (id,)
+    esta_borrado = db.consultaConParametros(consulta, params)
     return render_template("borrar.html", resultado=esta_borrado)
